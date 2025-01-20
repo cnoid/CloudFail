@@ -87,6 +87,9 @@ def dnsdumpster(target):
     
     res = DNSDumpsterAPI(False).search(target)
 
+    if not res:
+        return
+
     if res['dns_records']['host']:
         for entry in res['dns_records']['host']:
             provider = str(entry['provider'])
